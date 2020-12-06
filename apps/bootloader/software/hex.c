@@ -94,7 +94,7 @@ static uint16_t read_short(const char *line, size_t offset)
 	uint16_t res;
 	
 	memcpy(chars, line + offset, 4);
-	chars[5] = '\0';
+	chars[4] = '\0';
 
 	res = (uint16_t) strtoul(chars, &endptr, 16);
 	
