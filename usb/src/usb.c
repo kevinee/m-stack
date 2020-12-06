@@ -892,7 +892,9 @@ static inline int8_t handle_standard_control_request()
 		else if (descriptor == DESC_STRING) {
 #ifdef MICROSOFT_OS_DESC_VENDOR_CODE
 			if (descriptor_index == 0xee) {
-				/* Microsoft descriptor Requested */
+				/* Microsoft descriptor requested */
+				/* This will not be requested from USB 1.1 devices */
+				/* Device descriptor must state 0x0200 = USB 2.0 or higher */
 				#ifdef __XC8
 				/* static is better in all cases on XC8. On
 				 * XC16/32, non-static uses less RAM. */
@@ -904,7 +906,7 @@ static inline int8_t handle_standard_control_request()
 					0x3,                           /* bDescriptorType */
 					{'M','S','F','T','1','0','0'}, /* qwSignature */
 					MICROSOFT_OS_DESC_VENDOR_CODE, /* bMS_VendorCode */
-					0x0,                           /* bPad */
+					0x01,                          /* bPad Must be 0x01 */
 				};
 
 				start_control_return(&os_descriptor, sizeof(os_descriptor), setup->wLength);
