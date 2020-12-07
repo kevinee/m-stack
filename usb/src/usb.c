@@ -11,7 +11,7 @@
  *  Free Software Foundation, version 3; or the Apache License, version 2.0
  *  as published by the Apache Software Foundation.  If you have purchased a
  *  commercial license for this software from Signal 11 Software, your
- *  commerical license superceeds the information in this header.
+ *  commercial license supercedes the information in this header.
  *
  *  M-Stack is distributed in the hope that it will be useful, but WITHOUT
  *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
@@ -21,7 +21,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this software.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  You should have received a copy of the Apache License, verion 2.0 along
+ *  You should have received a copy of the Apache License, version 2.0 along
  *  with this software.  If not, see <http://www.apache.org/licenses/>.
  */
 
@@ -557,7 +557,7 @@ static void init_endpoints(void)
 
 /* usb_init() is called at powerup time, and when the device gets
    the reset signal from the USB bus (D+ and D- both held low) indicated
-   by interrput bit URSTIF. */
+   by interrupt bit URSTIF. */
 void usb_init(void)
 {
 	uint8_t i;
@@ -1735,7 +1735,7 @@ void __attribute__((vector(_USB_1_VECTOR), interrupt(), nomips16)) _USB1Interrup
 
 #elif __C18
 #elif __XC8
-	/* On these systems, interupt handlers are shared. An interrupt
+	/* On these systems, interrupt handlers are shared. An interrupt
 	 * handler from the application must call usb_service(). */
 #else
 #error Compiler not supported yet

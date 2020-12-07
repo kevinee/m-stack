@@ -10,7 +10,7 @@
  *  Free Software Foundation, version 3; or the Apache License, version 2.0
  *  as published by the Apache Software Foundation.  If you have purchased a
  *  commercial license for this software from Signal 11 Software, your
- *  commerical license superceeds the information in this header.
+ *  commercial license supercedes the information in this header.
  *
  *  M-Stack is distributed in the hope that it will be useful, but WITHOUT
  *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
@@ -20,7 +20,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this software.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  You should have received a copy of the Apache License, verion 2.0 along
+ *  You should have received a copy of the Apache License, version 2.0 along
  *  with this software.  If not, see <http://www.apache.org/licenses/>.
  */
 
@@ -104,7 +104,7 @@ extern const struct device_descriptor USB_DEVICE_DESCRIPTOR;
  * used by the USB stack to determine the number of bytes to use (It is
  * recommended to use the sizeof() operator for this field).
  *
- * See the example programs that come with the USB stack (specificallyl
+ * See the example programs that come with the USB stack (specifically
  * usb_descriptors.c) for a simple example of what is required.
  */
 extern const struct configuration_descriptor *USB_CONFIG_DESCRIPTOR_MAP[];
@@ -344,7 +344,7 @@ void USB_RESET_CALLBACK(void);
  *
  * Call this function at the beginning of execution. This function initializes
  * the USB peripheral hardware and software library. After calling this
- * funciton, the library will handle enumeration automatically when attached
+ * function, the library will handle enumeration automatically when attached
  * to a host.
  */
 void usb_init(void);
@@ -499,7 +499,7 @@ uint8_t usb_halt_ep_out(uint8_t ep);
  *
  * @param endpoint   The endpoint requested
  * @returns
- *   Return true if the endpointed is halted, or false if it is not.
+ *   Return true if the endpoint is halted, or false if it is not.
  */
 bool usb_out_endpoint_halted(uint8_t endpoint);
 

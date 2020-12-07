@@ -8,7 +8,8 @@ driver, allowing easy creation of cross-platform applications using Libusb.
 
 While the source code for libusb applications can be the same across
 platforms, Libusb and WinUSB on Windows will not support isochronous
-endpoints.  This is a limitation of WinUSB.
+endpoints.  This is a limitation of WinUSB. [Edit: This should be fixed
+for Windows 8.1 onwards]
 
 INF Files
 ----------
@@ -51,7 +52,7 @@ See the documents in the references section below for more details.
 Tricks
 -------
 Windows will only read the Microsoft-specific descriptors the first time the
-device is connected, which is undisrable during development of a WinUSB
+device is connected, which is undesirable during development of a WinUSB
 device.  Windows can be forced to re-read the descriptors by performing the
 following steps:
 	1. In the Device Manager, right-click the device (which will show
