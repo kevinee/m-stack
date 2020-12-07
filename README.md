@@ -1,20 +1,21 @@
-
-M-Stack: Free USB Stack for PIC 16F, 18F, 24F, and 32MX Microcontrollers
-==========================================================================
+M-Stack: USB Stack for USB-FS PIC MCUs
+===========================================
 
 About
-======
+-----
 
 A USB device stack is the software necessary to drive the USB device
 peripheral hardware on a microcontroller (MCU) or other device.  Typically a
 USB peripheral only supports the transaction level and below of the USB
-protocol.  Enumeration and transfers are left to the firmware or software to
+protocol.  Enumeration and transfers are left to the firmware to
 implement.  The Microchip PIC line of microcontrollers work exactly this
 way.
 
 M-Stack is a functional, well-documented, open source implementation of a
-USB stack for Microchip PIC platforms.  It performs the following
-operations:
+USB stack for Microchip PICs which have the full-speed (12Mbit/s) USB
+peripheral. That includes numerous PIC 16F, 18F, 24F, and 32MX/MK/MM Microcontrollers.
+
+M-Stack performs the following operations:
  * USB device hardware initialization
  * USB interrupt handling
  * Management of the serial interface engine SIE
@@ -25,12 +26,13 @@ operations:
 
 The following device classes are supported:
  * HID - Human Interface Device
- * CDC-ACM - Communication Device Class - Abstract Control Model
  * Mass Storage Class (MSC) with MMC/SD card support
+ * Vendor WCID - Silent install plug & play USB FS comms via WinUSB / libusb
+ * CDC-ACM - Communication Device Class - Abstract Control Model
 
 Other features include:
- * Clean, well-documented examples (device, and PC-host (libusb))
- * Fast PIC24 bootloader
+ * Clean, well-documented examples for both device and PC-host (libusb)
+ * Fast bootloader for PIC24 and PIC32MX
 
 While having a working USB stack is of great benefit when starting a USB
 project, know that there is no substitute for actually knowing the details
@@ -39,59 +41,25 @@ creating a USB device.
 
 Home
 -----
-The master web page for this project can be found at:
+
+This project was forked from:
   http://www.signal11.us/oss/m-stack/
 
 License
-========
+-------
 
-The DFU related source code in dfu.c/.h is licensed under the GNU General
-Public License (GPL) version 2.0, refer to those files for
-further information.
-
-The remainder of this software is dual-licensed under the GNU Lesser General
-Public License (LGPL) version 3.0 and the Apache License, version 2.0.  It may be used
+This software is dual-licensed under the GNU Lesser General Public License
+(LGPL) version 3.0 and the Apache License, version 2.0.  It may be used
 under the terms of either one of these licenses as seen fit.  It may be
 used in commercial and open hardware projects so long as the conditions of
 one of these licenses can be met.
 
-Contribution
--------------
-Code contributions should be directed to http://www.signal11.us/oss/m-stack/
+Some files under a different license, see LICENSE-3rdParty.txt
 
-Consulting Services
---------------------
-USB is hard. There's no getting around it. There's a good chance if you're
-reading this that USB is not the main focus of your project.  USB is a means
-to an end, and your specialization is likely more related to the end than to
-the means.  Given that, doesn't it makes sense to hire someone to help you
-with the USB aspect of your project?  Many find that hiring specialized
-consultants for specialized jobs can drastically reduce the total cost of a
-project.  Signal 11 can help you.  This software testifies to the expertise
-Signal 11 Software has with respect to USB and software development.  See
-the website at http://www.signal11.us for more information.
-
-Getting Started
-================
-
-Downloading the Software
--------------------------
-M-Stack's source code is currently hosted on Github at:
-  https://github.com/signal11/m-stack
-
-To get the latest version, run:
-```
-  git clone https://github.com/signal11/m-stack.git
-```
-
-Documentation
---------------
-M-Stack has Doxygen-generated documentation at:
-      http://www.signal11.us/oss/m-stack/m-stack/html/group__public__api.html
 
 Supported hardware
 -------------------
-M-Stack has currently been tested on PIC16F, PIC18F PIC24F, and PIC32MX
+M-Stack has currently been tested on PIC16F, PIC18F, PIC24F and PIC32MX
 devices.  Microchip has obviously made a conscious effort to make the
 register-level interfaces to their USB peripherals as similar as possible
 across MCUs and even across MCU families.  While many devices should be able
@@ -109,11 +77,8 @@ The following MCU's and configurations have been tested:
  * PIC16F1454 - similar to PIC16F1459
 
 If your hardware is not supported, and it's in the PIC16F/18F/24F/32MX
-family, I can probably easily make you a port without very much trouble. 
-The easiest way is for you to send me a development board.  If your hardware
-is in another MCU family which is not currently supported, I can also make
-you a port, but it will be more effort.  In either case, I'd be happy to
-talk with you about it.
+family, you can probably make a port without much trouble. 
+
 
 Supported Software
 -------------------
@@ -123,12 +88,6 @@ The USB stack is supported by the following software:
  * Microchip XC32 compiler
  * Microchip MPLAB X IDE
 
-Note that the C18 compiler is not currently supported. There are some
-`#defines` in the code for C18 because this project came from code that was
-originally done on a PIC18F4550 using C18.  It has not yet been determined
-whether a port to C18 will be made, as C18 has been deprecated by Microchip.
-Further, C18 has some properties which make a port somewhat more difficult
-than other compilers.
 
 Building the Unit Test Firmware
 --------------------------------
@@ -252,7 +211,7 @@ To create a new project, perform the following steps:
 
 
 Limitations
-============
+-----------
 
 Nothing's perfect. Here are the known limitations:
  * Control transfers are supported on endpoint 0 only.
@@ -260,18 +219,9 @@ Nothing's perfect. Here are the known limitations:
  * Remote wake-up is not supported.
 
 
-Future Plans
-=============
-
-The following features are on the horizon:
-
- * Support for more specific MCUs
- * dsPIC33E and PIC24E support
- * Isochronous transfers
-
 
 References
-===========
+----------
 
 USB
 ----
@@ -285,21 +235,6 @@ Jan Axelson's online USB resources:  http://www.lvr.com/usb.htm
 
 Microchip PIC
 --------------
-Microchip Libraries for Applications: http://www.microchip.com/mla
 
 Microchip MPLAB X: http://www.microchip.com/mplabx
 
-Contacts
-=========
-
-Please contact Signal 11 Software directly for support or consulting help.
-Sometime in the near future there will be a mailing list.
-
-Alan Ott  
-Signal 11 Software  
-alan@signal11.us  
-http://www.signal11.us  
-+1 407-222-6975  
-
-2013-04-26  
-2013-05-20
